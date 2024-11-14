@@ -24,7 +24,7 @@ This project evaluates three embedding models—Universal Sentence Encoder (USE)
 
 1. Clone the repository and navigate to the project directory.
 2. Install dependencies using `pip install -r requirements.txt`.
-3. Run the evaluation pipeline with `python main.py` to see model performance on the synthetic dataset.
+3. Run the evaluation pipeline with `python Task1_Retrieval (Search) System Evaluation.py` to see model performance on the synthetic dataset.
 
 ## Visualization
 
