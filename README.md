@@ -29,4 +29,12 @@ This project evaluates three embedding models—Universal Sentence Encoder (USE)
 ## Visualization
 
 The project includes a bar chart comparing model performance based on Precision@2, Recall@2, and MRR metrics.
+## Final Comparative Analysis
+
+| Model  | Precision@2 | Recall@2 | MRR  |
+|--------|-------------|----------|------|
+| BERT   | 0.667       | 0.667    | 1.000|
+| Cohere | 0.833       | 0.833    | 0.833|
+| USE    | 0.500       | 0.500    | 0.667|
+
 ![Bar_Plot](image.png)
