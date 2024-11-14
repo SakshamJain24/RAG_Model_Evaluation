@@ -38,3 +38,50 @@ The project includes a bar chart comparing model performance based on Precision@
 | USE    | 0.500       | 0.500    | 0.667|
 
 ![Bar_Plot](image.png)
+
+# Task 2 - Text Generation and Evaluation System
+
+## Objective
+
+This project aims to evaluate three language models—GPT-2, BART, and T5—in generating accurate responses to specific queries based on retrieved documents. Each model’s generated output is compared against a reference text using evaluation metrics to determine model performance and response accuracy.
+
+## Approach
+
+1. **Dataset**:
+   - Three queries related to Elon Musk were used as prompts.
+   - For each query, two relevant documents were retrieved to serve as input for the models.
+   - Reference texts were manually created to provide a standard for evaluation.
+
+2. **Text Generation**:
+   - GPT-2, BART, and T5 were used to generate responses based on the concatenated content of two relevant documents per query.
+   - The generated responses were then evaluated against the reference texts.
+
+3. **Evaluation Metrics**:
+   - **ROUGE**: Measures overlap of n-grams between generated text and reference text.
+   - **BLEU**: Calculates precision of n-gram overlap to assess text fluency and relevancy.
+   - **BERTScore**: Uses contextual embeddings to evaluate semantic similarity between generated and reference texts.
+
+4. **Challenges and Solutions**:
+   - Dataset creation was time-intensive due to a lack of pre-existing, tailored resources.
+   - To enhance future comparisons, additional models (e.g., Ollama models like Mixtral, LLama) could be incorporated for broader evaluation.
+
+## Results
+
+Below is a summary of the evaluation results for each query and language model:
+
+| Query                                | Model | ROUGE-1 | ROUGE-L | BLEU | BERTScore |
+|--------------------------------------|-------|----------|----------|-------|-----------|
+| Where was Elon Musk born?            | BART  | 0.425532 | 0.425532 | 0.244 | 0.919492  |
+|                                      | GPT-2 | 0.232558 | 0.232558 | 0.099 | 0.885008  |
+|                                      | T5    | 0.454545 | 0.454545 | 0.171 | 0.927223  |
+| What was Musk's childhood like?      | BART  | 0.264151 | 0.188679 | 0.000 | 0.913298  |
+|                                      | GPT-2 | 0.239130 | 0.152174 | 0.000 | 0.892665  |
+|                                      | T5    | 0.333333 | 0.222222 | 0.000 | 0.922462  |
+| How did Musk get interested in tech? | BART  | 0.571429 | 0.321429 | 0.137 | 0.906031  |
+|                                      | GPT-2 | 0.344086 | 0.301075 | 0.089 | 0.885932  |
+|                                      | T5    | 0.530612 | 0.448980 | 0.157 | 0.894565  |
+
+## Conclusion
+
+- **T5** performed best overall, with higher ROUGE and BERTScore metrics across most queries, indicating strong fluency and semantic relevance.
+- **BART** also performed well, particularly in ROUGE scores, while **GPT-2** had the lowest scores overall, suggesting it may be less effective for factual generation tasks.
