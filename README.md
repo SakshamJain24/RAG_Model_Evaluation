@@ -29,6 +29,22 @@ This project evaluates three embedding models—Universal Sentence Encoder (USE)
 ## Visualization
 
 The project includes a bar chart comparing model performance based on Precision@2, Recall@2, and MRR metrics.
+
+## Detailed Results per Query
+
+| Query                                  | Model   | Precision@2 | Recall@2 | MRR   |
+|----------------------------------------|---------|-------------|----------|-------|
+| Where was Elon Musk born?              | USE     | 0.5         | 0.5      | 0.5   |
+| Where was Elon Musk born?              | BERT    | 0.5         | 0.5      | 0.5   |
+| Where was Elon Musk born?              | Cohere  | 0.5         | 0.5      | 0.5   |
+| What was Musk's childhood like?        | USE     | 0.5         | 0.5      | 0.5   |
+| What was Musk's childhood like?        | BERT    | 0.5         | 0.5      | 1.0   |
+| What was Musk's childhood like?        | Cohere  | 1.0         | 1.0      | 1.0   |
+| How did Musk get interested in technology? | USE  | 0.5         | 0.5      | 1.0   |
+| How did Musk get interested in technology? | BERT | 0.5         | 0.5      | 1.0   |
+| How did Musk get interested in technology? | Cohere | 1.0       | 1.0      | 1.0   |
+
+
 ## Final Comparative Analysis
 
 | Model  | Precision@2 | Recall@2 | MRR  |
