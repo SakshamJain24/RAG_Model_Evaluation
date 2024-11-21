@@ -33,7 +33,7 @@ The project includes a bar chart comparing model performance based on Precision@
 
 | Model  | Precision@2 | Recall@2 | MRR  |
 |--------|-------------|----------|------|
-| BERT   | 0.667       | 0.667    | 1.000|
+| BERT   | 0.500       | 0.500    | 0.833|
 | Cohere | 0.833       | 0.833    | 0.833|
 | USE    | 0.500       | 0.500    | 0.667|
 
