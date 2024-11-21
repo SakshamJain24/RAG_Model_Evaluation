@@ -24,7 +24,7 @@ class EmbeddingEvaluator:
         return embeddings.numpy()
 
     def get_bert_embeddings(self, texts):
-        # Generate embeddings using SentenceTransformer
+        # Generating embeddings using SentenceTransformer
         embeddings = self.bert_model.encode(texts, convert_to_numpy=True)
         return embeddings
 
@@ -99,11 +99,11 @@ def evaluate_embeddings(data, cohere_api_key):
 
 
 def create_comparative_analysis(results_df):
-    # Calculate average metrics per model
+    # Calculating average metrics per model
     comparative_analysis = results_df.groupby("Model")[["Precision@2", "Recall@2", "MRR"]].mean().round(3)
     comparative_analysis = comparative_analysis.reset_index()
 
-    # Create visualization
+    # Creating visualization
     plt.figure(figsize=(10, 6))
     metrics = ["Precision@2", "Recall@2", "MRR"]
     x = np.arange(len(comparative_analysis["Model"]))
@@ -124,17 +124,17 @@ def create_comparative_analysis(results_df):
 
 if __name__ == "__main__":
 
-    # Run evaluation
+    # Running evaluation
     results_df = evaluate_embeddings(data, COHERE_API_KEY)
 
-    # Generate comparative analysis and visualization
+    # Generating comparative analysis and visualization
     comparative_analysis, plot = create_comparative_analysis(results_df)
 
-    # Print final comparative analysis table
+    # Printing final comparative analysis table
     print("\nFinal Comparative Analysis:")
     print(comparative_analysis.to_string(index=False))
 
-    # Display detailed results if needed
+    # Displaying detailed results
     print("\nDetailed Results per Query:")
     detailed_results = results_df[["Query", "Model", "Precision@2", "Recall@2", "MRR"]]
     print(detailed_results.to_string())
