@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import tensorflow_hub as hub
-from transformers import AutoTokenizer, AutoModel
+from sentence_transformers import SentenceTransformer
 import torch
 import cohere
 import numpy as np
@@ -15,20 +15,17 @@ class EmbeddingEvaluator:
         print("Loading USE model...")
         self.use_model = hub.load("https://tfhub.dev/google/universal-sentence-encoder/4")
 
-        print("Loading BERT model...")
-        self.bert_tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
-        self.bert_model = AutoModel.from_pretrained('bert-base-uncased')
+        print("Loading SentenceTransformer BERT model...")
+        self.bert_model = SentenceTransformer("all-MiniLM-L6-v2")
 
     def get_use_embeddings(self, texts):
         embeddings = self.use_model(texts)
         return embeddings.numpy()
 
     def get_bert_embeddings(self, texts):
-        encoded_input = self.bert_tokenizer(texts, padding=True, truncation=True, return_tensors='pt')
-        with torch.no_grad():
-            model_output = self.bert_model(**encoded_input)
-        sentence_embeddings = model_output.last_hidden_state[:, 0, :]
-        return sentence_embeddings.numpy()
+        # Generate embeddings using SentenceTransformer
+        embeddings = self.bert_model.encode(texts, convert_to_numpy=True)
+        return embeddings
 
     def get_cohere_embeddings(self, texts):
         response = self.cohere_client.embed(
